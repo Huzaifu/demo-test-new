@@ -9,16 +9,12 @@ pipeline{
         }
         stage("copy index.html file into /var/www/html/"){
             steps{
-                sh '''
-                    mv index.html /var/www/html/
-                '''
+                sh "mv index.html /var/www/html/"
             }
         }
         stage("Reload nginx"){
             steps{
-                sh '''
-                    systemctl reload nginx
-                '''
+                sh "systemctl reload nginx"
             }
         }
     }
