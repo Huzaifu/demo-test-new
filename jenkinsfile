@@ -1,0 +1,21 @@
+pipeline{
+    agent any 
+
+    stages{
+        stage("checkout"){
+            steps{
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Huzaifu/demo-test-new.git']])
+            }
+        }
+        stage("copy index.html file into /var/www/html/"){
+            steps{
+                sh cp index.html /var/www/html/
+            }
+        }
+        stage("Reload nginx"){
+            steps{
+                sh systemctl reload nginx
+            }
+        }
+    }
+}
