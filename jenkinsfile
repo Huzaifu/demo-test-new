@@ -16,7 +16,9 @@ pipeline{
         }
         stage("Reload nginx"){
             steps{
-                sh systemctl reload nginx
+                sh '''
+                    systemctl reload nginx
+                '''
             }
         }
     }
