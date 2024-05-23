@@ -9,7 +9,7 @@ pipeline{
         }
         stage("copy index.html file into /var/www/html/"){
             steps{
-                sh cp index.html /var/www/html/
+                sh mv index.html /var/www/html/
             }
         }
         stage("Reload nginx"){
